@@ -1,0 +1,50 @@
+@page "/vacunados"
+@using Data.Models
+@using Microsoft.EntityFrameworkCore
+@inject vacunaContext vc
+
+<h3>Vacunados</h3>
+<br>
+<div class="input-group">
+    <label for="filtro" class="input-group-text">Nombre o Apellido</label>
+    <input id="filtro" type="text" @bind-value="filtro" class="form-control">
+</div>
+<br>
+@if (vacunados == null) {
+    <h4>Cargando...</h4>
+} else {
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Provincia</th>
+            <th>Vacuna #1</th>
+            <th>Vacuna #2</th>
+        </tr>
+        @foreach (var v in vacunados.Where(x => x.Nombre.ToLower().Contains(filtro) || x.Apellido.ToLower().Contains(filtro)))
+        {
+            <tr>
+                <td>@v.Id</td>
+                <td>@v.Cedula</td>
+                <td>@v.Nombre</td>
+                <td>@v.Apellido</td>
+                <td>@v.Telefono</td>
+                <td>@v.Provincia.Nombre</td>
+                <td>@v.Vacuna1Fecha</td>
+                <td>@v.Vacuna2Fecha</td>
+            </tr>
+        }
+    </table>
+}
+
+@code {
+    private string filtro = "";
+    private List<Vacunado> vacunados = null;
+    
+    protected override void OnInitialized() {
+        vacunados = vc.Vacunados.Include(x => x.Provincia).ToList();
+    }
+}
