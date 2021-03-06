@@ -16,7 +16,7 @@ namespace Tarea7.Data.Models
         public int Id { get; set; }
         public string Marca { get; set; }
         public int CantidadRestante { get; set; }
-        public int CantidadTotal { get; set; }
+        public int CantidadEntrante { get; set; }
 
         public virtual ICollection<Vacunado> VacunadoVacuna1s { get; set; }
         public virtual ICollection<Vacunado> VacunadoVacuna2s { get; set; }
