@@ -72,4 +72,4 @@ Pagina para hacer graficos
 - vamos a agregarle que al momento de registrar una persona vamos a indicar la latitud y longitud de donde se hace esa vacunación.
 - A la tarea 7 agréguele una opción para mirar en modo mapa,
 - Donde aquí aparecerá un marcador por cada persona que se ha registrado en nuestro sistema.
-- Al hacer click en un marcador, vamos a visualizar los datos de la persona, así como que vacuna recibió y cuantas dosis de la misma se ha puesto. 
+- Al hacer click en un marcador, vamos a visualizar los datos de la persona, así como que vacuna recibió y cuantas dosis de la misma se ha puesto. 0

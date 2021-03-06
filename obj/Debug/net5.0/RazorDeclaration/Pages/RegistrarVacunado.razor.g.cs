@@ -13,77 +13,77 @@ namespace Tarea7.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 1 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 2 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 3 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 4 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 5 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 6 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 7 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 8 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 9 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Tarea7;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\_Imports.razor"
+#line 10 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Tarea7.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\Pages\RegistrarVacunado.razor"
+#line 2 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
 using Data.Models;
 
 #line default
@@ -98,7 +98,7 @@ using Data.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 82 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\Pages\RegistrarVacunado.razor"
+#line 132 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
        
     private string cedulaInput = "";
     private string cedula = "";
@@ -107,19 +107,21 @@ using Data.Models;
 
     private string error = "";
 
-    private void parseaCedula() {
+    private void parseaCedula()
+    {
         
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 95 "C:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Tarea7\Pages\RegistrarVacunado.razor"
+#line 146 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
                          
 
         cedula = cedulaInput.Replace("-", "").Replace(" ", "");
 
-        if (!Functions.ValidaCedula(cedula)) {
+        if (!Functions.ValidaCedula(cedula))
+        {
             error = "La cedula ingresada no es valida";
             return;
         }
@@ -127,50 +129,63 @@ using Data.Models;
         buscaCedula();
     }
 
-    private void buscaCedula() {
-        try {
+    private void buscaCedula()
+    {
+        try
+        {
             vacunado = vc.Vacunados.Where(x => x.Cedula == cedula).First();
             existente = true;
             error = "";
-        } catch (InvalidOperationException) {
+        }
+        catch (InvalidOperationException)
+        {
             buscaEnApi();
         }
     }
 
-    private async void buscaEnApi() {
+    private async void buscaEnApi()
+    {
         string url = $"https://api.adamix.net/apec/cedula/{cedula}";
-        try {
+        try
+        {
             CedulaInfo datos = await http.GetJsonAsync<CedulaInfo>(url);
             reemplazarDatos(datos);
-        } catch {
+        }
+        catch
+        {
             vacunado = new Vacunado();
         }
-        
+
         error = "";
         StateHasChanged();
     }
 
-    private void reemplazarDatos(CedulaInfo datos) {
+    private void reemplazarDatos(CedulaInfo datos)
+    {
         string nombre = datos.Nombres;
-        string apellido = datos.Apellido1+" "+datos.Apellido2;
+        string apellido = datos.Apellido1 + " " + datos.Apellido2;
         DateTime fechaNacimiento = Convert.ToDateTime(datos.FechaNacimiento);
 
-        vacunado = new Vacunado{
+        vacunado = new Vacunado
+        {
             Cedula = cedula,
             Nombre = nombre,
             Apellido = apellido,
         };
     }
 
-    private void vacunadoValido() {
-        if (!existente) {
+    private void vacunadoValido()
+    {
+        if (!existente)
+        {
             vc.Add(vacunado);
             existente = true;
         }
         vc.SaveChanges();
     }
 
-    private void borrarVacunado() {
+    private void borrarVacunado()
+    {
         vc.Remove(vacunado);
         vc.SaveChanges();
 

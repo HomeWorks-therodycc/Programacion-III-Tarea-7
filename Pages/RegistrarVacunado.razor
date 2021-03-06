@@ -9,73 +9,123 @@
     <label for="cedula" class="input-group-text">Cedula</label>
     <input id="cedula" type="text" @bind-value="cedulaInput" class="form-control">
     <div class="input-group-append">
-    <button @onclick="parseaCedula" class="btn btn-success">Buscar</button>
-  </div>
+        <button @onclick="parseaCedula" class="btn btn-success">Buscar</button>
+    </div>
 </div>
 <br>
-@if (error != "") {
+@if (error != "")
+{
     <h4 class="text-danger">@error</h4>
-} else if (vacunado != null) {
+}
+else if (vacunado != null)
+{
+
+
+
+
+
+
+
+
+
+
+
     <EditForm Model="vacunado" OnValidSubmit="vacunadoValido">
         <DataAnnotationsValidator />
-        <div class="form-group">
-            <div class="input-group mb-1">
-                <label class="input-group-text">Cedula:</label>
-                <InputText @bind-Value="vacunado.Cedula" class="form-control" />
-            </div>
-            <div class="input-group mb-1">
-                <label class="input-group-text">Nombres:</label>
-                <InputText @bind-Value="vacunado.Nombre" class="form-control" />
-            </div>
-            <div class="input-group mb-1">
-                <label class="input-group-text">Apellidos:</label>
-                <InputText @bind-Value="vacunado.Apellido" class="form-control" />
-            </div>
-            <div class="input-group mb-1">
-                <label class="input-group-text">Telefono:</label>
-                <InputText @bind-Value="vacunado.Telefono" class="form-control" />
-            </div>
-            <div class="input-group mb-1">
-                <label class="input-group-text">Provincia:</label>
-                <InputSelect @bind-Value="vacunado.ProvinciaId" class="form-control">
+
+    <table class="table">
+            <tr>
+                <td>Cedula</td>
+                <td><InputText @bind-Value="vacunado.Cedula" class="form-control" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Nombres</td>
+                <td><InputText @bind-Value="vacunado.Nombre" class="form-control" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Apellidos</td>
+                <td><InputText @bind-Value="vacunado.Apellido" class="form-control" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Telefono</td>
+                <td><InputText @bind-Value="vacunado.Telefono" class="form-control" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Fecha de nacimiento</td>
+                <td><input type="text" class="form-control"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Signo zodiacal</td>
+                <td><input type="text" class="form-control"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Provincia</td>
+                <td>
+                    <InputSelect @bind-Value="vacunado.ProvinciaId" class="form-control">
                     @* <option value="" disabled></option> *@
                     @foreach (var p in vc.Provincias)
                     {
                         <option value="@p.Id">@p.Nombre</option>
                     }
-                </InputSelect>
-            </div>
-            <div class="input-group mb-1">
-                <label class="input-group-text">Vacuna #1:</label>
-                <InputDate @bind-Value="vacunado.Vacuna1Fecha" class="form-control"/>
-                <InputSelect @bind-Value="vacunado.Vacuna1Id" class="form-control">
+                    </InputSelect>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Vacuna #1</td>
+                <td><InputDate @bind-Value="vacunado.Vacuna1Fecha" class="form-control" /></td>
+                <td>
+                    <InputSelect @bind-Value="vacunado.Vacuna1Id" class="form-control">
                     <option value="">N/A</option>
                     @foreach (var v in vc.Vacunas)
                     {
                         <option value="@v.Id">@v.Marca</option>
                     }
                 </InputSelect>
-            </div>
-            <div class="input-group mb-1">
-                <label class="input-group-text">Vacuna #2:</label>
-                <InputDate @bind-Value="vacunado.Vacuna2Fecha" class="form-control" disabled="@(!vacunado.Vacuna1Id.HasValue)"/>
-                <InputSelect @bind-Value="vacunado.Vacuna2Id" class="form-control"  disabled="@(!vacunado.Vacuna1Id.HasValue)">
+                </td>
+            </tr>
+            <tr>
+                <td>Vacuna #2</td>
+                <td><InputDate @bind-Value="vacunado.Vacuna2Fecha" class="form-control" disabled="@(!vacunado.Vacuna1Id.HasValue)" /></td>
+                <td>
+                    <InputSelect @bind-Value="vacunado.Vacuna2Id" class="form-control"
+                    disabled="@(!vacunado.Vacuna1Id.HasValue)">
                     <option value="">N/A</option>
                     @foreach (var v in vc.Vacunas)
                     {
                         <option value="@v.Id">@v.Marca</option>
                     }
                 </InputSelect>
-                @* <button class="btn btn-warning">Borrar Vacuna</button> *@
-            </div>
-            <br>
-            <div class="input-group mb-1">
-                <button type="submit" class="btn btn-success mx-1">Guardar</button>
-                @if (existente) {
+                </td>
+            </tr>
+            <tr>
+                <td>Latitud</td>
+                <td><input type="text" class="form-control"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Longitud</td>
+                <td><input type="text" class="form-control"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    @if (existente)
+                    {
                     <button @onclick="borrarVacunado" class="btn btn-warning mx-1">Borrar</button>
-                }
-            </div>
-        </div>
+                    }
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
     </EditForm>
 }
 
@@ -87,7 +137,8 @@
 
     private string error = "";
 
-    private void parseaCedula() {
+    private void parseaCedula()
+    {
         @* cedulaInput = ""; *@
         @* cedula = ""; *@
         @* vacunado = null; *@
@@ -96,7 +147,8 @@
 
         cedula = cedulaInput.Replace("-", "").Replace(" ", "");
 
-        if (!Functions.ValidaCedula(cedula)) {
+        if (!Functions.ValidaCedula(cedula))
+        {
             error = "La cedula ingresada no es valida";
             return;
         }
@@ -104,50 +156,63 @@
         buscaCedula();
     }
 
-    private void buscaCedula() {
-        try {
+    private void buscaCedula()
+    {
+        try
+        {
             vacunado = vc.Vacunados.Where(x => x.Cedula == cedula).First();
             existente = true;
             error = "";
-        } catch (InvalidOperationException) {
+        }
+        catch (InvalidOperationException)
+        {
             buscaEnApi();
         }
     }
 
-    private async void buscaEnApi() {
+    private async void buscaEnApi()
+    {
         string url = $"https://api.adamix.net/apec/cedula/{cedula}";
-        try {
+        try
+        {
             CedulaInfo datos = await http.GetJsonAsync<CedulaInfo>(url);
             reemplazarDatos(datos);
-        } catch {
+        }
+        catch
+        {
             vacunado = new Vacunado();
         }
-        
+
         error = "";
         StateHasChanged();
     }
 
-    private void reemplazarDatos(CedulaInfo datos) {
+    private void reemplazarDatos(CedulaInfo datos)
+    {
         string nombre = datos.Nombres;
-        string apellido = datos.Apellido1+" "+datos.Apellido2;
+        string apellido = datos.Apellido1 + " " + datos.Apellido2;
         DateTime fechaNacimiento = Convert.ToDateTime(datos.FechaNacimiento);
 
-        vacunado = new Vacunado{
+        vacunado = new Vacunado
+        {
             Cedula = cedula,
             Nombre = nombre,
             Apellido = apellido,
         };
     }
 
-    private void vacunadoValido() {
-        if (!existente) {
+    private void vacunadoValido()
+    {
+        if (!existente)
+        {
             vc.Add(vacunado);
             existente = true;
         }
         vc.SaveChanges();
     }
 
-    private void borrarVacunado() {
+    private void borrarVacunado()
+    {
         vc.Remove(vacunado);
         vc.SaveChanges();
 
