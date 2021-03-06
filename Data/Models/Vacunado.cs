@@ -13,11 +13,15 @@ namespace Tarea7.Data.Models
         public string Nombre { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Apellido { get; set; }
+        [Required]
         [StringLength(10)]
         public string Telefono { get; set; }
         public string SignoZodiacal { get; set; }
+        [Required]
         public int ProvinciaId { get; set; }
+        [Required]
         public int? Vacuna1Id { get; set; }
+        [Required]
         public DateTime? Vacuna1Fecha { get; set; }
         public int? Vacuna2Id { get; set; }
         public DateTime? Vacuna2Fecha { get; set; }
