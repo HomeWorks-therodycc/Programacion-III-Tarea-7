@@ -153,6 +153,7 @@ using Data.Models;
     private void reemplazarDatos(CedulaInfo datos) {
         string nombre = datos.Nombres;
         string apellido = datos.Apellido1+" "+datos.Apellido2;
+        DateTime fechaNacimiento = Convert.ToDateTime(datos.FechaNacimiento);
 
         vacunado = new Vacunado{
             Cedula = cedula,

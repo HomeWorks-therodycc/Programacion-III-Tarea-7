@@ -48,13 +48,13 @@ namespace Tarea7.Data.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.CantidadRestante).HasColumnName("cantidad_restante");
-                
-                entity.Property(e => e.CantidadTotal).HasColumnName("cantidad_total");
-
                 entity.Property(e => e.Marca)
                     .IsRequired()
                     .HasColumnName("marca");
+
+                entity.Property(e => e.CantidadRestante).HasColumnName("cantidad_restante");
+                
+                entity.Property(e => e.CantidadEntrante).HasColumnName("cantidad_entrante");
             });
 
             modelBuilder.Entity<Vacunado>(entity =>
@@ -66,10 +66,6 @@ namespace Tarea7.Data.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Apellido)
-                    .IsRequired()
-                    .HasColumnName("apellido");
-
                 entity.Property(e => e.Cedula)
                     .IsRequired()
                     .HasColumnName("cedula");
@@ -78,10 +74,21 @@ namespace Tarea7.Data.Models
                     .IsRequired()
                     .HasColumnName("nombre");
 
+                entity.Property(e => e.Apellido)
+                    .IsRequired()
+                    .HasColumnName("apellido");
+
+                entity.Property(e => e.FechaNacimiento)
+                    .IsRequired()
+                    .HasColumnName("fecha_nacimiento");
+
+                entity.Property(e => e.SignoZodiacal)
+                    .IsRequired()
+                    .HasColumnName("signo_zodiacal");
+
                 entity.Property(e => e.ProvinciaId).HasColumnName("provincia_id");
 
                 entity.Property(e => e.Telefono)
-                    .IsRequired()
                     .HasColumnName("telefono");
 
                 entity.Property(e => e.Vacuna1Fecha).HasColumnName("vacuna1_fecha");
@@ -91,6 +98,12 @@ namespace Tarea7.Data.Models
                 entity.Property(e => e.Vacuna2Fecha).HasColumnName("vacuna2_fecha");
 
                 entity.Property(e => e.Vacuna2Id).HasColumnName("vacuna2_id");
+
+                entity.Property(e => e.Latitud)
+                    .HasColumnName("latitud");
+
+                entity.Property(e => e.Longitud)
+                    .HasColumnName("longitud");
 
                 entity.HasOne(d => d.Provincia)
                     .WithMany(p => p.Vacunados)
