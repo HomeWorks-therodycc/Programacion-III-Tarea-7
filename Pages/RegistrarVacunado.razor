@@ -3,7 +3,11 @@
 @inject vacunaContext vc
 @inject HttpClient http
 
-<h3>Registrar Vacunado</h3>
+
+<div class="alert alert-light" role="alert">
+    <h3>Registrar Vacunado</h3>
+</div>
+
 <br>
 <div class="input-group">
     <label for="cedula" class="input-group-text">Cedula</label>
@@ -15,20 +19,12 @@
 <br>
 @if (error != "")
 {
-    <h4 class="text-danger">@error</h4>
+    <div class="alert alert-danger" role="alert">
+        @error
+    </div>
 }
 else if (vacunado != null)
 {
-
-
-
-
-
-
-
-
-
-
 
     <EditForm Model="vacunado" OnValidSubmit="vacunadoValido">
         <DataAnnotationsValidator />

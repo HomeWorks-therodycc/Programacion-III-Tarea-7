@@ -98,7 +98,7 @@ using Data.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 132 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
+#line 128 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
        
     private string cedulaInput = "";
     private string cedula = "";
@@ -115,7 +115,7 @@ using Data.Models;
 #line hidden
 #nullable disable
 #nullable restore
-#line 146 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
+#line 142 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
                          
 
         cedula = cedulaInput.Replace("-", "").Replace(" ", "");
