@@ -105,13 +105,14 @@ using Microsoft.EntityFrameworkCore;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 46 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 68 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\Vacunados.razor"
        
     private string filtro = "";
     private List<Vacunado> vacunados = null;
     
     protected override void OnInitialized() {
-        vacunados = vc.Vacunados.Include(x => x.Provincia).ToList();
+        vacunados = vc.Vacunados.Include("Provincia")
+            .Include("Vacuna1").Include("Vacuna2").ToList();
     }
 
 #line default

@@ -3,10 +3,11 @@
 @using Data.Models
 @using Microsoft.EntityFrameworkCore
 @inject vacunaContext vc
-
-<h3>Borrar Vacunado</h3>
+<div class="alert alert-light" role="alert">
+    <h3>Borrar Vacunado</h3>
+</div>
 <br>
-<div class="input-group w-50">
+<div class="input-group">
     <label for="cedula" class="input-group-text">Cedula</label>
     <input id="cedula" type="text" @bind-value="cedulaInput" class="form-control">
     <div class="input-group-append">
@@ -14,10 +15,12 @@
     </div>
 </div>
 <br>
-@if (error != "") {
+@if (error != "")
+{
     <h4 class="text-danger">@error</h4>
 }
-@if (vacunado != null) {
+@if (vacunado != null)
+{
     <table class="table">
         <tr>
             <th>Cedula</th>
@@ -41,22 +44,22 @@
             <td>@vacunado.Telefono</td>
             <td>@vacunado.Provincia.Nombre</td>
             <td>
-                @((vacunado.Vacuna1Id.HasValue) 
-                ? vacunado.Vacuna1.Marca : "N/A")
+                @((vacunado.Vacuna1Id.HasValue)
+            ? vacunado.Vacuna1.Marca : "N/A")
             </td>
             <td>
-                @((vacunado.Vacuna1Fecha.HasValue) ? 
-                vacunado.Vacuna1Fecha.Value.ToShortDateString() 
-                : "N/A")
+                @((vacunado.Vacuna1Fecha.HasValue) ?
+            vacunado.Vacuna1Fecha.Value.ToShortDateString()
+            : "N/A")
             </td>
             <td>
-                @((vacunado.Vacuna2Id.HasValue) 
-                ? vacunado.Vacuna2.Marca : "N/A")
+                @((vacunado.Vacuna2Id.HasValue)
+            ? vacunado.Vacuna2.Marca : "N/A")
             </td>
             <td>
-                @((vacunado.Vacuna2Fecha.HasValue) ? 
-                vacunado.Vacuna2Fecha.Value.ToShortDateString() 
-                : "N/A")
+                @((vacunado.Vacuna2Fecha.HasValue) ?
+            vacunado.Vacuna2Fecha.Value.ToShortDateString()
+            : "N/A")
             </td>
         </tr>
     </table>
@@ -71,13 +74,15 @@
     private string error = "";
 
     private Vacunado vacunado = null;
-    
-    private void parseaCedula() {
+
+    private void parseaCedula()
+    {
         cedula = cedulaInput.Replace("-", "").Replace(" ", "");
 
         vacunado = null;
-        
-        if (!Functions.ValidaCedula(cedula)) {
+
+        if (!Functions.ValidaCedula(cedula))
+        {
             error = "La cedula ingresada no es valida";
             return;
         }
@@ -85,19 +90,23 @@
         buscaCedula();
     }
 
-    private void buscaCedula() {
-        try {
+    private void buscaCedula()
+    {
+        try
+        {
             vacunado = vc.Vacunados.Where(x => x.Cedula == cedula)
                 .Include("Provincia").Include("Vacuna1")
                 .Include("Vacuna2").First();
             error = "";
         }
-        catch (InvalidOperationException) {
+        catch (InvalidOperationException)
+        {
             error = "No se ha encontrado ninguna persona con esa cedula";
         }
     }
 
-    private void borrarVacunado() {
+    private void borrarVacunado()
+    {
         vc.Remove(vacunado);
         vc.SaveChanges();
         vacunado = null;

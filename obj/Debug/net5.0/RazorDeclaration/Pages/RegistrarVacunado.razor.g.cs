@@ -34,13 +34,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
-using Microsoft.AspNetCore.Components.Forms;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 5 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
@@ -89,7 +82,14 @@ using Data.Models;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/vacunados/registrar")]
+#nullable restore
+#line 3 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
+using Microsoft.AspNetCore.Components.Forms;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/registrar")]
     public partial class RegistrarVacunado : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -98,30 +98,21 @@ using Data.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 128 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
+#line 121 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
        
     private string cedulaInput = "";
     private string cedula = "";
-    private Vacunado vacunado = null;
-    private bool existente = false;
-
     private string error = "";
 
-    private void parseaCedula()
-    {
-        
+    private Vacunado vacunado = null;
+    private bool existente = false;
+    private bool nuevo = true;
 
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 142 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
-                         
 
+    private void parseaCedula() {
         cedula = cedulaInput.Replace("-", "").Replace(" ", "");
 
-        if (!Functions.ValidaCedula(cedula))
-        {
+        if (!Functions.ValidaCedula(cedula)) {
             error = "La cedula ingresada no es valida";
             return;
         }
@@ -129,30 +120,25 @@ using Data.Models;
         buscaCedula();
     }
 
-    private void buscaCedula()
-    {
-        try
-        {
+    private void buscaCedula() {
+        try {
             vacunado = vc.Vacunados.Where(x => x.Cedula == cedula).First();
             existente = true;
+            nuevo = false;
             error = "";
         }
-        catch (InvalidOperationException)
-        {
+        catch (InvalidOperationException) {
             buscaEnApi();
         }
     }
 
-    private async void buscaEnApi()
-    {
+    private async void buscaEnApi() {
         string url = $"https://api.adamix.net/apec/cedula/{cedula}";
-        try
-        {
+        try {
             CedulaInfo datos = await http.GetJsonAsync<CedulaInfo>(url);
             reemplazarDatos(datos);
         }
-        catch
-        {
+        catch {
             vacunado = new Vacunado();
         }
 
@@ -166,31 +152,26 @@ using Data.Models;
         string apellido = datos.Apellido1 + " " + datos.Apellido2;
         DateTime fechaNacimiento = Convert.ToDateTime(datos.FechaNacimiento);
 
-        vacunado = new Vacunado
-        {
+        vacunado = new Vacunado {
             Cedula = cedula,
             Nombre = nombre,
             Apellido = apellido,
+            FechaNacimiento = fechaNacimiento,
+            SignoZodiacal = fechaNacimiento.toZodiacSign()
         };
     }
 
-    private void vacunadoValido()
-    {
-        if (!existente)
-        {
-            vc.Add(vacunado);
-            existente = true;
+    private void vacunadoValido() {
+        if (existente && (!vacunado.Vacuna2Id.HasValue || !vacunado.Vacuna2Fecha.HasValue)) {
+            error = "Falta la fecha o la marca de la vacuna #2";
+            return;
         }
-        vc.SaveChanges();
-    }
 
-    private void borrarVacunado()
-    {
-        vc.Remove(vacunado);
-        vc.SaveChanges();
+        if (nuevo) {
+            vc.Add(vacunado);
+        }
 
-        vacunado = null;
-        existente = false;
+        vc.SaveChanges();
     }
 
 #line default
