@@ -6,7 +6,7 @@
 <h3>Vacunados</h3>
 </div>
 <br>
-<div class="input-group">
+<div class="input-group w-50">
     <label for="filtro" class="input-group-text">Nombre o Apellido</label>
     <input id="filtro" type="text" @bind-value="filtro" class="form-control">
 </div>
@@ -18,26 +18,48 @@
 } else {
     <table class="table">
         <tr>
-            <th>ID</th>
             <th>Cedula</th>
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Signo Zodiacal</th>
             <th>Telefono</th>
             <th>Provincia</th>
             <th>Vacuna #1</th>
+            <th>Fecha</th>
             <th>Vacuna #2</th>
+            <th>Fecha</th>
         </tr>
-        @foreach (var v in vacunados.Where(x => x.Nombre.ToLower().Contains(filtro) || x.Apellido.ToLower().Contains(filtro)))
+        @foreach (var va in vacunados
+            .Where(x => x.Nombre.ToLower().Contains(filtro) 
+            || x.Apellido.ToLower().Contains(filtro)))
         {
             <tr>
-                <td>@v.Id</td>
-                <td>@v.Cedula</td>
-                <td>@v.Nombre</td>
-                <td>@v.Apellido</td>
-                <td>@v.Telefono</td>
-                <td>@v.Provincia.Nombre</td>
-                <td>@v.Vacuna1Fecha</td>
-                <td>@v.Vacuna2Fecha</td>
+                <td>@va.Cedula</td>
+                <td>@va.Nombre</td>
+                <td>@va.Apellido</td>
+                <td>@va.FechaNacimiento.ToShortDateString()</td>
+                <td>@va.SignoZodiacal</td>
+                <td>@va.Telefono</td>
+                <td>@va.Provincia.Nombre</td>
+                <td>
+                    @((va.Vacuna1Id.HasValue) 
+                    ? va.Vacuna1.Marca : "N/A")
+                </td>
+                <td>
+                    @((va.Vacuna1Fecha.HasValue) ? 
+                    va.Vacuna1Fecha.Value.ToShortDateString() 
+                    : "N/A")
+                </td>
+                <td>
+                    @((va.Vacuna2Id.HasValue) 
+                    ? va.Vacuna2.Marca : "N/A")
+                </td>
+                <td>
+                    @((va.Vacuna2Fecha.HasValue) ? 
+                    va.Vacuna2Fecha.Value.ToShortDateString() 
+                    : "N/A")
+                </td>
             </tr>
         }
     </table>
@@ -48,6 +70,7 @@
     private List<Vacunado> vacunados = null;
     
     protected override void OnInitialized() {
-        vacunados = vc.Vacunados.Include(x => x.Provincia).ToList();
+        vacunados = vc.Vacunados.Include("Provincia")
+            .Include("Vacuna1").Include("Vacuna2").ToList();
     }
 }

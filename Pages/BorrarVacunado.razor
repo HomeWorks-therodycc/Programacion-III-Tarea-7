@@ -1,0 +1,105 @@
+@page "/borrar"
+
+@using Data.Models
+@using Microsoft.EntityFrameworkCore
+@inject vacunaContext vc
+
+<h3>Borrar Vacunado</h3>
+<br>
+<div class="input-group w-50">
+    <label for="cedula" class="input-group-text">Cedula</label>
+    <input id="cedula" type="text" @bind-value="cedulaInput" class="form-control">
+    <div class="input-group-append">
+        <button @onclick="parseaCedula" class="btn btn-success">Buscar</button>
+    </div>
+</div>
+<br>
+@if (error != "") {
+    <h4 class="text-danger">@error</h4>
+}
+@if (vacunado != null) {
+    <table class="table">
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Signo Zodiacal</th>
+            <th>Telefono</th>
+            <th>Provincia</th>
+            <th>Vacuna #1</th>
+            <th>Fecha</th>
+            <th>Vacuna #2</th>
+            <th>Fecha</th>
+        </tr>
+        <tr>
+            <td>@vacunado.Cedula</td>
+            <td>@vacunado.Nombre</td>
+            <td>@vacunado.Apellido</td>
+            <td>@vacunado.FechaNacimiento.ToShortDateString()</td>
+            <td>@vacunado.SignoZodiacal</td>
+            <td>@vacunado.Telefono</td>
+            <td>@vacunado.Provincia.Nombre</td>
+            <td>
+                @((vacunado.Vacuna1Id.HasValue) 
+                ? vacunado.Vacuna1.Marca : "N/A")
+            </td>
+            <td>
+                @((vacunado.Vacuna1Fecha.HasValue) ? 
+                vacunado.Vacuna1Fecha.Value.ToShortDateString() 
+                : "N/A")
+            </td>
+            <td>
+                @((vacunado.Vacuna2Id.HasValue) 
+                ? vacunado.Vacuna2.Marca : "N/A")
+            </td>
+            <td>
+                @((vacunado.Vacuna2Fecha.HasValue) ? 
+                vacunado.Vacuna2Fecha.Value.ToShortDateString() 
+                : "N/A")
+            </td>
+        </tr>
+    </table>
+    <div class="w-25 mx-auto">
+        <button @onclick="borrarVacunado" class="btn btn-warning">Borrar Registro</button>
+    </div>
+}
+
+@code {
+    private string cedulaInput = "";
+    private string cedula = "";
+    private string error = "";
+
+    private Vacunado vacunado = null;
+    
+    private void parseaCedula() {
+        cedula = cedulaInput.Replace("-", "").Replace(" ", "");
+
+        vacunado = null;
+        
+        if (!Functions.ValidaCedula(cedula)) {
+            error = "La cedula ingresada no es valida";
+            return;
+        }
+
+        buscaCedula();
+    }
+
+    private void buscaCedula() {
+        try {
+            vacunado = vc.Vacunados.Where(x => x.Cedula == cedula)
+                .Include("Provincia").Include("Vacuna1")
+                .Include("Vacuna2").First();
+            error = "";
+        }
+        catch (InvalidOperationException) {
+            error = "No se ha encontrado ninguna persona con esa cedula";
+        }
+    }
+
+    private void borrarVacunado() {
+        vc.Remove(vacunado);
+        vc.SaveChanges();
+        vacunado = null;
+    }
+}

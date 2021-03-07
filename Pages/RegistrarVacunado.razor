@@ -1,5 +1,6 @@
-@page "/vacunados/registrar"
+@page "/registrar"
 @using Data.Models
+@using Microsoft.AspNetCore.Components.Forms
 @inject vacunaContext vc
 @inject HttpClient http
 
@@ -9,7 +10,7 @@
 </div>
 
 <br>
-<div class="input-group">
+<div class="input-group w-50">
     <label for="cedula" class="input-group-text">Cedula</label>
     <input id="cedula" type="text" @bind-value="cedulaInput" class="form-control">
     <div class="input-group-append">
@@ -23,13 +24,16 @@
         @error
     </div>
 }
-else if (vacunado != null)
+@if (vacunado != null)
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6329038d40ef13c11021257bff077bb0e13690da
     <EditForm Model="vacunado" OnValidSubmit="vacunadoValido">
         <DataAnnotationsValidator />
 
-    <table class="table">
+        <table class="table">
             <tr>
                 <td>Cedula</td>
                 <td><InputText @bind-Value="vacunado.Cedula" class="form-control" /></td>
@@ -52,21 +56,15 @@ else if (vacunado != null)
             </tr>
             <tr>
                 <td>Fecha de nacimiento</td>
-                <td><input type="text" class="form-control"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Signo zodiacal</td>
-                <td><input type="text" class="form-control"></td>
+                <td><InputDate @bind-Value="vacunado.FechaNacimiento" class="form-control" /></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Provincia</td>
                 <td>
                     <InputSelect @bind-Value="vacunado.ProvinciaId" class="form-control">
-                    @* <option value="" disabled></option> *@
-                    @foreach (var p in vc.Provincias)
-                    {
+                    <option value=""></option>
+                    @foreach (var p in vc.Provincias) {
                         <option value="@p.Id">@p.Nombre</option>
                     }
                     </InputSelect>
@@ -74,33 +72,40 @@ else if (vacunado != null)
                 <td></td>
             </tr>
             <tr>
-                <td>Vacuna #1</td>
-                <td><InputDate @bind-Value="vacunado.Vacuna1Fecha" class="form-control" /></td>
+                <td>
+                    @* <InputCheckbox @bind-Value="vacuna1" class="form-check-input"/> *@
+                    Vacuna #1
+                </td>
+                <td>
+                    <InputDate @bind-Value="vacunado.Vacuna1Fecha" class="form-control"/>
+                </td>
                 <td>
                     <InputSelect @bind-Value="vacunado.Vacuna1Id" class="form-control">
-                    <option value="">N/A</option>
-                    @foreach (var v in vc.Vacunas)
-                    {
+                    <option value=""></option>
+                    @foreach (var v in vc.Vacunas) {
                         <option value="@v.Id">@v.Marca</option>
                     }
                 </InputSelect>
                 </td>
             </tr>
             <tr>
-                <td>Vacuna #2</td>
-                <td><InputDate @bind-Value="vacunado.Vacuna2Fecha" class="form-control" disabled="@(!vacunado.Vacuna1Id.HasValue)" /></td>
+            @if (existente){
                 <td>
-                    <InputSelect @bind-Value="vacunado.Vacuna2Id" class="form-control"
-                    disabled="@(!vacunado.Vacuna1Id.HasValue)">
-                    <option value="">N/A</option>
-                    @foreach (var v in vc.Vacunas)
-                    {
-                        <option value="@v.Id">@v.Marca</option>
-                    }
-                </InputSelect>
+                    @* <InputCheckbox @bind-Value="vacuna2" class="form-check-input"/> *@
+                    Vacuna #2
                 </td>
+                <td><InputDate @bind-Value="vacunado.Vacuna2Fecha" class="form-control"/></td>
+                <td>
+                    <InputSelect @bind-Value="vacunado.Vacuna2Id" class="form-control">
+                        <option value=""></option>
+                        @foreach (var v in vc.Vacunas.Where(x => x.CantidadRestante > 0)) {
+                            <option value="@v.Id">@v.Marca</option>
+                        }
+                    </InputSelect>
+                </td>
+            }
             </tr>
-            <tr>
+            @* <tr>
                 <td>Latitud</td>
                 <td><input type="text" class="form-control"></td>
                 <td></td>
@@ -109,42 +114,28 @@ else if (vacunado != null)
                 <td>Longitud</td>
                 <td><input type="text" class="form-control"></td>
                 <td></td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                    @if (existente)
-                    {
-                    <button @onclick="borrarVacunado" class="btn btn-warning mx-1">Borrar</button>
-                    }
-                </td>
-                <td></td>
-                <td></td>
-            </tr>
+            </tr> *@
         </table>
+        <div class="w-25 mx-auto">
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
     </EditForm>
 }
 
 @code {
     private string cedulaInput = "";
     private string cedula = "";
-    private Vacunado vacunado = null;
-    private bool existente = false;
-
     private string error = "";
 
-    private void parseaCedula()
-    {
-        @* cedulaInput = ""; *@
-        @* cedula = ""; *@
-        @* vacunado = null; *@
-        @* existente = false; *@
-        @* error = ""; *@
+    private Vacunado vacunado = null;
+    private bool existente = false;
+    private bool nuevo = true;
 
+
+    private void parseaCedula() {
         cedula = cedulaInput.Replace("-", "").Replace(" ", "");
 
-        if (!Functions.ValidaCedula(cedula))
-        {
+        if (!Functions.ValidaCedula(cedula)) {
             error = "La cedula ingresada no es valida";
             return;
         }
@@ -152,30 +143,25 @@ else if (vacunado != null)
         buscaCedula();
     }
 
-    private void buscaCedula()
-    {
-        try
-        {
+    private void buscaCedula() {
+        try {
             vacunado = vc.Vacunados.Where(x => x.Cedula == cedula).First();
             existente = true;
+            nuevo = false;
             error = "";
         }
-        catch (InvalidOperationException)
-        {
+        catch (InvalidOperationException) {
             buscaEnApi();
         }
     }
 
-    private async void buscaEnApi()
-    {
+    private async void buscaEnApi() {
         string url = $"https://api.adamix.net/apec/cedula/{cedula}";
-        try
-        {
+        try {
             CedulaInfo datos = await http.GetJsonAsync<CedulaInfo>(url);
             reemplazarDatos(datos);
         }
-        catch
-        {
+        catch {
             vacunado = new Vacunado();
         }
 
@@ -189,30 +175,25 @@ else if (vacunado != null)
         string apellido = datos.Apellido1 + " " + datos.Apellido2;
         DateTime fechaNacimiento = Convert.ToDateTime(datos.FechaNacimiento);
 
-        vacunado = new Vacunado
-        {
+        vacunado = new Vacunado {
             Cedula = cedula,
             Nombre = nombre,
             Apellido = apellido,
+            FechaNacimiento = fechaNacimiento,
+            SignoZodiacal = fechaNacimiento.toZodiacSign()
         };
     }
 
-    private void vacunadoValido()
-    {
-        if (!existente)
-        {
-            vc.Add(vacunado);
-            existente = true;
+    private void vacunadoValido() {
+        if (existente && (!vacunado.Vacuna2Id.HasValue || !vacunado.Vacuna2Fecha.HasValue)) {
+            error = "Falta la fecha o la marca de la vacuna #2";
+            return;
         }
-        vc.SaveChanges();
-    }
 
-    private void borrarVacunado()
-    {
-        vc.Remove(vacunado);
-        vc.SaveChanges();
+        if (nuevo) {
+            vc.Add(vacunado);
+        }
 
-        vacunado = null;
-        existente = false;
+        vc.SaveChanges();
     }
 }
