@@ -4,9 +4,19 @@
     display: flex;
     flex-direction: column;
 }
+[b-hki0v3o8kw]::-webkit-scrollbar-thumb{
+    border-radius:50px;
+    width: 30px;
+    background-color: black;
+}
 
+[b-hki0v3o8kw]::-webkit-scrollbar{
+    width: 7px;
+    background-color: blue;
+}
 .main[b-hki0v3o8kw] {
     flex: 1;
+    overflow: auto;
 }
 
 .sidebar[b-hki0v3o8kw] {

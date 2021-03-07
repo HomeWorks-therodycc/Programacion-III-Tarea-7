@@ -1,3 +1,6 @@
+# Diagrama
+<img src="./wwwroot/img/diagrama.png"></img>
+
 # Registrar Vacuna
 
 * Para registrar una persona que se vacuna deben digitar la cedula de la persona 
