@@ -105,7 +105,7 @@ using Microsoft.EntityFrameworkCore;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 86 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 88 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\Vacunados.razor"
        
     private string filtro = "";
     private List<Vacunado> vacunados = null;

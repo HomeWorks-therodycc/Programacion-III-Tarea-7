@@ -24,11 +24,12 @@ else
 {
 
     <table class="table">
+
                 @foreach (var va in vacunados
     .Where(x => x.Nombre.ToLower().Contains(filtro)
     || x.Apellido.ToLower().Contains(filtro)))
         {
-            <div class="alert alert-info" role="alert">
+        <div  class="@(va.Id % 2 == 0 ? "alert alert-info":"alert alert-success")" role="alert">
         <tr class="thead">
             <th>Id</th>
             <th>Cedula</th>
@@ -79,6 +80,7 @@ else
             <td></td>
         </tr>
         </div>
+            
         }
     </table>
 }
