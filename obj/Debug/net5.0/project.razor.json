@@ -45,39 +45,6 @@
         }
       },
       {
-        "HashCode": -301852798,
-        "Kind": "Components.Component",
-        "Name": "Tarea7.Pages.Vacunados",
-        "AssemblyName": "Tarea7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Vacunados"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.Pages.Vacunados"
-        }
-      },
-      {
-        "HashCode": -423554379,
-        "Kind": "Components.Component",
-        "Name": "Tarea7.Pages.Vacunados",
-        "AssemblyName": "Tarea7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Tarea7.Pages.Vacunados"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.Pages.Vacunados",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1347745897,
         "Kind": "Components.Component",
         "Name": "Tarea7.Pages.RegistrarVacunado",
@@ -140,6 +107,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Tarea7.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -301852798,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.Vacunados",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Vacunados"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.Vacunados"
+        }
+      },
+      {
+        "HashCode": -423554379,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.Vacunados",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Tarea7.Pages.Vacunados"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.Vacunados",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
