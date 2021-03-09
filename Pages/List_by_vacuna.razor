@@ -1,4 +1,7 @@
 @page "/Listbyvacuna"
+@using Data.Models
+@using Microsoft.EntityFrameworkCore
+@inject vacunaContext vc
 
 <h3 class="titulocantvacuna">Cantidad de personas vacunadas por vacuna</h3>
 
@@ -6,7 +9,7 @@
 <div class="small-box">
     <div class="inner">
         <h3>150</h3>
-        <p>Astrenezca</p>
+        <p>Astrazeneca</p>
     </div>
     <div class="icon">
         <i class="oi oi-person"></i>
@@ -15,7 +18,7 @@
 <div class="small-box">
     <div class="inner">
         <h3>150</h3>
-        <p>Astrenezca</p>
+        <p>Pfizer</p>
     </div>
     <div class="icon">
         <i class="oi oi-person"></i>
@@ -24,13 +27,37 @@
 <div class="small-box">
     <div class="inner">
         <h3>150</h3>
-        <p>Astrenezca</p>
+        <p>Sinovac</p>
     </div>
     <div class="icon">
         <i class="oi oi-person"></i>
     </div>
 </div>
 </div>
+
+<div class="alert alert-success" role="alert">
+  Listado de vacunas
+</div>
+<table class="table">
+    <tr>
+        <td>Id</td>
+        <td>Nombre</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+           <button type="button" class="btn btn-info"><i class="io io-plus"></i></button> 
+           <button type="button" class="btn btn-danger"><i class="io io-trash"></i></button> 
+        </td>
+    </tr>
+
+</table>
+
+
+
 @code{
-    
+
 }
