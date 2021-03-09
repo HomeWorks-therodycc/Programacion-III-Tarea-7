@@ -144,39 +144,6 @@
         }
       },
       {
-        "HashCode": -1759329085,
-        "Kind": "Components.Component",
-        "Name": "Tarea7.Pages.List_by_vacuna",
-        "AssemblyName": "Tarea7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "List_by_vacuna"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.Pages.List_by_vacuna"
-        }
-      },
-      {
-        "HashCode": -2029251984,
-        "Kind": "Components.Component",
-        "Name": "Tarea7.Pages.List_by_vacuna",
-        "AssemblyName": "Tarea7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Tarea7.Pages.List_by_vacuna"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.Pages.List_by_vacuna",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -941016220,
         "Kind": "Components.Component",
         "Name": "Tarea7.App",

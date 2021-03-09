@@ -82,44 +82,14 @@ using Tarea7.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
-using Data.Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
-using Microsoft.EntityFrameworkCore;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/vacunados")]
-    public partial class Vacunados : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
+    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 87 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
-       
-    private string filtro = "";
-    private List<Vacunado> vacunados = null;
-
-    protected override void OnInitialized()
-    {
-        vacunados = vc.Vacunados.Include("Provincia")
-            .Include("Vacuna1").Include("Vacuna2").ToList();
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private vacunaContext vc { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -83,21 +83,21 @@ using Tarea7.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 2 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\List_by_vacuna.razor"
 using Data.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 3 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\List_by_vacuna.razor"
 using Microsoft.EntityFrameworkCore;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/vacunados")]
-    public partial class Vacunados : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Listbyvacuna")]
+    public partial class List_by_vacuna : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,20 +105,28 @@ using Microsoft.EntityFrameworkCore;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 87 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 78 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\List_by_vacuna.razor"
        
-    private string filtro = "";
-    private List<Vacunado> vacunados = null;
+    private List<Vacuna> vacunas = null;
+    
+    protected override void OnInitialized() {
+        vacunas = vc.Vacunas.ToList();
+    }
 
-    protected override void OnInitialized()
-    {
-        vacunados = vc.Vacunados.Include("Provincia")
-            .Include("Vacuna1").Include("Vacuna2").ToList();
+    protected override void OnAfterRender(bool firstRender) {
+        List<string> marcas = new List<string>();
+        List<int> datos = new List<int>();
+        foreach (var v in vacunas) {
+            marcas.Add(v.Marca);
+            datos.Add(v.CantidadEntrante - v.CantidadRestante);
+        }
+        JS.InvokeVoidAsync("vacunasChart", marcas, datos);
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JS { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private vacunaContext vc { get; set; }
     }
 }

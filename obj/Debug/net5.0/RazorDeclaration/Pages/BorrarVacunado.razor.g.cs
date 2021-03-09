@@ -83,21 +83,21 @@ using Tarea7.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 3 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\BorrarVacunado.razor"
 using Data.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 4 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\BorrarVacunado.razor"
 using Microsoft.EntityFrameworkCore;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/vacunados")]
-    public partial class Vacunados : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/borrar")]
+    public partial class BorrarVacunado : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,15 +105,49 @@ using Microsoft.EntityFrameworkCore;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 87 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 71 "c:\Users\admin\Desktop\ITLA\Programacion 3\Tarea 7\Programacion-III-Tarea-7\Pages\BorrarVacunado.razor"
        
-    private string filtro = "";
-    private List<Vacunado> vacunados = null;
+    private string cedulaInput = "";
+    private string cedula = "";
+    private string error = "";
 
-    protected override void OnInitialized()
+    private Vacunado vacunado = null;
+
+    private void parseaCedula()
     {
-        vacunados = vc.Vacunados.Include("Provincia")
-            .Include("Vacuna1").Include("Vacuna2").ToList();
+        cedula = cedulaInput.Replace("-", "").Replace(" ", "");
+
+        vacunado = null;
+
+        if (!Functions.ValidaCedula(cedula))
+        {
+            error = "La cedula ingresada no es valida";
+            return;
+        }
+
+        buscaCedula();
+    }
+
+    private void buscaCedula()
+    {
+        try
+        {
+            vacunado = vc.Vacunados.Where(x => x.Cedula == cedula)
+                .Include("Provincia").Include("Vacuna1")
+                .Include("Vacuna2").First();
+            error = "";
+        }
+        catch (InvalidOperationException)
+        {
+            error = "No se ha encontrado ninguna persona con esa cedula";
+        }
+    }
+
+    private void borrarVacunado()
+    {
+        vc.Remove(vacunado);
+        vc.SaveChanges();
+        vacunado = null;
     }
 
 #line default
