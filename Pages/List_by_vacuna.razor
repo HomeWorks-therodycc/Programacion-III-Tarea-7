@@ -2,37 +2,54 @@
 @using Data.Models
 @using Microsoft.EntityFrameworkCore
 @inject vacunaContext vc
+@inject IJSRuntime JS;
 
 <h3 class="titulocantvacuna">Cantidad de personas vacunadas por vacuna</h3>
 
+<div>
+    <canvas id="myChart" width="800" height="400"></canvas>
+</div>
+
 <div class="contenido-counts">
-<div class="small-box">
-    <div class="inner">
-        <h3>150</h3>
-        <p>Astrazeneca</p>
+    @foreach (var v in vacunas)
+    {
+        <div class="small-box">
+            <div class="inner">
+                <h3>@(v.CantidadEntrante - v.CantidadRestante)</h3>
+                <p>@v.Marca</p>
+            </div>
+            <div class="icon">
+                <i class="oi oi-person"></i>
+            </div>
+        </div>
+    }
+    @* <div class="small-box">
+        <div class="inner">
+            <h3>150</h3>
+            <p>Astrazeneca</p>
+        </div>
+        <div class="icon">
+            <i class="oi oi-person"></i>
+        </div>
     </div>
-    <div class="icon">
-        <i class="oi oi-person"></i>
+    <div class="small-box">
+        <div class="inner">
+            <h3>150</h3>
+            <p>Pfizer</p>
+        </div>
+        <div class="icon">
+            <i class="oi oi-person"></i>
+        </div>
     </div>
-</div>
-<div class="small-box">
-    <div class="inner">
-        <h3>150</h3>
-        <p>Pfizer</p>
-    </div>
-    <div class="icon">
-        <i class="oi oi-person"></i>
-    </div>
-</div>
-<div class="small-box">
-    <div class="inner">
-        <h3>150</h3>
-        <p>Sinovac</p>
-    </div>
-    <div class="icon">
-        <i class="oi oi-person"></i>
-    </div>
-</div>
+    <div class="small-box">
+        <div class="inner">
+            <h3>150</h3>
+            <p>Sinovac</p>
+        </div>
+        <div class="icon">
+            <i class="oi oi-person"></i>
+        </div>
+    </div> *@
 </div>
 
 <div class="alert alert-success" role="alert">
@@ -58,6 +75,20 @@
 
 
 
-@code{
+@code {
+    private List<Vacuna> vacunas = null;
+    
+    protected override void OnInitialized() {
+        vacunas = vc.Vacunas.ToList();
+    }
 
+    protected override void OnAfterRender(bool firstRender) {
+        List<string> marcas = new List<string>();
+        List<int> datos = new List<int>();
+        foreach (var v in vacunas) {
+            marcas.Add(v.Marca);
+            datos.Add(v.CantidadEntrante - v.CantidadRestante);
+        }
+        JS.InvokeVoidAsync("vacunasChart", marcas, datos);
+    }
 }
