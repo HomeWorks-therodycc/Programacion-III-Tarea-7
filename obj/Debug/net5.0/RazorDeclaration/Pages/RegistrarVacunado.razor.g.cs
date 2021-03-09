@@ -98,7 +98,7 @@ using Microsoft.AspNetCore.Components.Forms;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 121 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
+#line 120 "C:\Users\rrody\Desktop\Tarea 7 programacion III\Programacion-III-Tarea-7\Pages\RegistrarVacunado.razor"
        
     private string cedulaInput = "";
     private string cedula = "";

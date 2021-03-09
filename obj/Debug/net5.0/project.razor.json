@@ -45,39 +45,6 @@
         }
       },
       {
-        "HashCode": 1347745897,
-        "Kind": "Components.Component",
-        "Name": "Tarea7.Pages.RegistrarVacunado",
-        "AssemblyName": "Tarea7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "RegistrarVacunado"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.Pages.RegistrarVacunado"
-        }
-      },
-      {
-        "HashCode": -360930986,
-        "Kind": "Components.Component",
-        "Name": "Tarea7.Pages.RegistrarVacunado",
-        "AssemblyName": "Tarea7",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Tarea7.Pages.RegistrarVacunado"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.Pages.RegistrarVacunado",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -144908218,
         "Kind": "Components.Component",
         "Name": "Tarea7.Pages.Index",
@@ -107,6 +74,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Tarea7.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1347745897,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.RegistrarVacunado",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "RegistrarVacunado"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.RegistrarVacunado"
+        }
+      },
+      {
+        "HashCode": -360930986,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.RegistrarVacunado",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Tarea7.Pages.RegistrarVacunado"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.RegistrarVacunado",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -144,35 +144,35 @@
         }
       },
       {
-        "HashCode": -941016220,
+        "HashCode": -818939430,
         "Kind": "Components.Component",
-        "Name": "Tarea7.App",
+        "Name": "Tarea7.Pages.list_by_vacuna",
         "AssemblyName": "Tarea7",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "list_by_vacuna"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.App"
+          "Common.TypeName": "Tarea7.Pages.list_by_vacuna"
         }
       },
       {
-        "HashCode": -1564331534,
+        "HashCode": -1875688738,
         "Kind": "Components.Component",
-        "Name": "Tarea7.App",
+        "Name": "Tarea7.Pages.list_by_vacuna",
         "AssemblyName": "Tarea7",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Tarea7.App"
+            "TagName": "Tarea7.Pages.list_by_vacuna"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Tarea7.App",
+          "Common.TypeName": "Tarea7.Pages.list_by_vacuna",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -302,6 +302,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Tarea7.Shared.NavMenu",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -941016220,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.App",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.App"
+        }
+      },
+      {
+        "HashCode": -1564331534,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.App",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Tarea7.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -15902,11 +15935,6 @@
       "FileKind": "componentImport"
     },
     {
-      "FilePath": "c:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Pages\\_Host.cshtml",
-      "TargetPath": "Pages\\_Host.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Pages\\BorrarVacunado.razor",
       "TargetPath": "Pages\\BorrarVacunado.razor",
       "FileKind": "component"
@@ -15932,9 +15960,9 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
+      "FilePath": "c:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Pages\\list_by_vacuna.razor",
+      "TargetPath": "Pages\\list_by_vacuna.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Pages\\RegistrarVacunado.razor",
