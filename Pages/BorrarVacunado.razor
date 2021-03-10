@@ -7,7 +7,7 @@
 <h3 class="titulocantvacuna">Borrar Vacunado</h3>
 
 <br>
-<div class="input-group">
+<div class="input-group w-50">
     <label for="cedula" class="input-group-text">Cedula</label>
     <input id="cedula" type="text" @bind-value="cedulaInput" class="form-control">
     <div class="input-group-append">
@@ -22,7 +22,7 @@
 @if (vacunado != null)
 {
     <table class="table">
-        <tr>
+        @* <tr>
             <th>Cedula</th>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -61,7 +61,58 @@
             vacunado.Vacuna2Fecha.Value.ToShortDateString()
             : "N/A")
             </td>
+        </tr> *@
+        <div  class="alert alert-secondary" role="alert">
+        <tr class="thead">
+            <th>Id</th>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Signo Zodiacal</th>
         </tr>
+        <tr>
+            <td>@vacunado.Id</td>
+            <td>@vacunado.Cedula</td>
+            <td>@vacunado.Nombre</td>
+            <td>@vacunado.Apellido</td>
+            <td>@vacunado.FechaNacimiento.ToShortDateString()</td>
+            <td>@vacunado.SignoZodiacal</td>
+        </tr>
+        <tr>
+            <th>Telefono</th>
+            <th>Provincia</th>
+            <th>Vacuna #1</th>
+            <th>Fecha</th>
+            <th>Vacuna #2</th>
+            <th>Fecha</th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td>@vacunado.Telefono</td>
+            <td>@vacunado.Provincia.Nombre</td>
+            <td>
+                @((vacunado.Vacuna1Id.HasValue)
+            ? vacunado.Vacuna1.Marca : "N/A")
+            </td>
+            <td>
+                @((vacunado.Vacuna1Fecha.HasValue) ?
+            vacunado.Vacuna1Fecha.Value.ToShortDateString()
+            : "N/A")
+            </td>
+            <td>
+                @((vacunado.Vacuna2Id.HasValue)
+            ? vacunado.Vacuna2.Marca : "N/A")
+            </td>
+            <td>
+                @((vacunado.Vacuna2Fecha.HasValue) ?
+            vacunado.Vacuna2Fecha.Value.ToShortDateString()
+            : "N/A")
+            </td>
+            <td></td>
+        </tr>
+        </div>
     </table>
     <div class="w-25 mx-auto">
         <button @onclick="borrarVacunado" class="btn btn-warning">Borrar Registro</button>
