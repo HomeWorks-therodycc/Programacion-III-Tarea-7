@@ -45,6 +45,39 @@
         }
       },
       {
+        "HashCode": 1949725642,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.configuration",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "configuration"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.configuration"
+        }
+      },
+      {
+        "HashCode": -1404399243,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.configuration",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Tarea7.Pages.configuration"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.configuration",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -254916149,
         "Kind": "Components.Component",
         "Name": "Tarea7.Pages.BorrarVacunado",
@@ -15929,6 +15962,11 @@
   },
   "RootNamespace": "Tarea7",
   "Documents": [
+    {
+      "FilePath": "c:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Pages\\configuration.razor",
+      "TargetPath": "Pages\\configuration.razor",
+      "FileKind": "component"
+    },
     {
       "FilePath": "c:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\_Imports.razor",
       "TargetPath": "_Imports.razor",
