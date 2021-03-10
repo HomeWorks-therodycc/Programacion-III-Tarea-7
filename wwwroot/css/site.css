@@ -92,7 +92,40 @@ a, .btn-link {
     font-weight: bold;
 }
 
+/************************************************************************************/
 
+.small-box-signos{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 230px;
+    height: auto;
+    background-color: rgba(0, 41, 95, 0.904);
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.377);
+    margin: 10px;
+}
+
+.small-box-signos .inner h3{
+    font-size: 25px;
+    color:white;
+    font-weight: bold;
+}
+
+.small-box-signos .inner p{
+    font-size: 25px;
+    color:rgb(255, 255, 255);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(15, 46, 97, 0.808);
+}
+.small-box-signos .icon i{
+    font-size: 35px;
+    color:rgb(132, 226, 250);
+    font-weight: bold;
+}
+
+/*******************************************************************************/
 .contenido-counts{
     display: flex;
     justify-content:space-evenly;

@@ -48,11 +48,13 @@ else
         <tr>
             <th>Telefono</th>
             <th>Provincia</th>
-            <th>Vacuna #1</th>
+        
+            <th><button class="@(va.Vacuna1Id.HasValue == false ? "btn btn-danger":"btn btn-success")">Vacuna #1</button></th>
             <th>Fecha</th>
-            <th>Vacuna #2</th>
+            <th><button class="@(va.Vacuna2Id.HasValue == false ? "btn btn-danger":"btn btn-success")">Vacuna #2</button></th>
             <th>Fecha</th>
             <th></th>
+        
         </tr>
 
         <tr>
@@ -68,8 +70,10 @@ else
             : "N/A")
             </td>
             <td>
-                @((va.Vacuna2Id.HasValue)
+
+            @((va.Vacuna2Id.HasValue)
             ? va.Vacuna2.Marca : "N/A")
+            
             </td>
             <td>
                 @((va.Vacuna2Fecha.HasValue) ?
@@ -83,8 +87,9 @@ else
         }
     </table>
 }
-
 @code {
+
+    string vacunss = null;
     private string filtro = "";
     private List<Vacunado> vacunados = null;
 

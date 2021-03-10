@@ -6,22 +6,23 @@
 <h3 class="titulocantvacuna">Cantidad de personas vacunadas por vacuna</h3>
 
 <br>
-<table class="table mb-40">
-    <tr>
-   @foreach (var s in signos)
-    {
-        <th>@s</th>
-    }
-    </tr>
-    <tr>
+
+<div class="contenido-counts">
     @foreach (var s in signos)
     {
-        <td class="text-center">
-            @vacunados.Count(x => x.SignoZodiacal == s)
-        </td>
+        <div class="small-box-signos">
+            <div class="inner">
+                <h3>@s</h3>
+                <p> @vacunados.Count(x => x.SignoZodiacal == s)</p>
+            </div>
+            <div class="icon">
+                <i class="oi oi-person"></i>
+            </div>
+        </div>
     }
-    </tr>
-</table>
+</div>
+
+
 
 @code {
 
