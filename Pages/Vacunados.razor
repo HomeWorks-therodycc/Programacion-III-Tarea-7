@@ -9,9 +9,15 @@
 <br>
 <div class="input-group w-50">
     <label for="filtro" class="input-group-text">Nombre o Apellido</label>
-    <input id="filtro" type="text" @bind-value="filtro" class="form-control">
+    <input id="filtro" type="text" @bind="filtro" class="form-control" />
+    <div>
+        <button @onclick="buscar" class="btn btn-success">Buscar</button>
+    </div>
+    
 </div>
+
 <br>
+
 
 @if (vacunados == null)
 {
@@ -85,12 +91,18 @@ else
 }
 
 @code {
-    private string filtro = "";
+    private string filtro = String.Empty;
+    List<Vacunado> filva;
     private List<Vacunado> vacunados = null;
-
+        
     protected override void OnInitialized()
     {
         vacunados = vc.Vacunados.Include("Provincia")
             .Include("Vacuna1").Include("Vacuna2").ToList();
     }
+    private void buscar(){
+            if(!string.IsNullOrEmpty(filtro)){
+                filva = vacunados.Where(x => x.Nombre == filtro.ToLower() && x.Apellido == filtro.ToLower()).ToList();;
+            }
+        }
 }

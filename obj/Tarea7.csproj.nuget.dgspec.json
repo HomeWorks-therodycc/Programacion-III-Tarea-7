@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Tarea7.csproj": {}
+    "C:\\Users\\HP 15-BS191DX\\Documents\\Tarea7.1\\Programacion-III-Tarea-7\\Tarea7.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Tarea7.csproj": {
+    "C:\\Users\\HP 15-BS191DX\\Documents\\Tarea7.1\\Programacion-III-Tarea-7\\Tarea7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Tarea7.csproj",
+        "projectUniqueName": "C:\\Users\\HP 15-BS191DX\\Documents\\Tarea7.1\\Programacion-III-Tarea-7\\Tarea7.csproj",
         "projectName": "Tarea7",
-        "projectPath": "C:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\Tarea7.csproj",
-        "packagesPath": "C:\\Users\\rrody\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rrody\\Desktop\\Tarea 7 programacion III\\Programacion-III-Tarea-7\\obj\\",
+        "projectPath": "C:\\Users\\HP 15-BS191DX\\Documents\\Tarea7.1\\Programacion-III-Tarea-7\\Tarea7.csproj",
+        "packagesPath": "C:\\Users\\HP 15-BS191DX\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP 15-BS191DX\\Documents\\Tarea7.1\\Programacion-III-Tarea-7\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\rrody\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\HP 15-BS191DX\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -77,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
