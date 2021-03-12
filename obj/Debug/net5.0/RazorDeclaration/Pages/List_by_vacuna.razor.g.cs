@@ -104,6 +104,29 @@ using Microsoft.EntityFrameworkCore;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 55 "C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\Pages\List_by_vacuna.razor"
+       
+    private List<Vacuna> vacunas = null;
+    
+    protected override void OnInitialized() {
+        vacunas = vc.Vacunas.ToList();
+    }
+
+    protected override void OnAfterRender(bool firstRender) {
+        List<string> marcas = new List<string>();
+        List<int> datos = new List<int>();
+        foreach (var v in vacunas) {
+            marcas.Add(v.Marca);
+            datos.Add(v.CantidadEntrante - v.CantidadRestante);
+        }
+        JS.InvokeVoidAsync("vacunasChart", marcas, datos);
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JS { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private vacunaContext vc { get; set; }
     }
 }

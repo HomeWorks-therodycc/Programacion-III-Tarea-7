@@ -105,7 +105,7 @@ using Microsoft.EntityFrameworkCore;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 93 "C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\Pages\Vacunados.razor"
+#line 96 "C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\Pages\Vacunados.razor"
        
     private string filtro = String.Empty;
     List<Vacunado> filva;

@@ -1,0 +1,61 @@
+@page "/Listbyprovincia"
+@using Data.Models
+@using Microsoft.EntityFrameworkCore
+@inject vacunaContext vc
+
+<h3 class="titulocantvacuna">Listado de vacunados por provincia</h3>
+
+<br>
+<div class="input-group w-50">
+    <label for="provinciaFiltro" class="input-group-text">Provincia</label>
+    <select id="provinciaFiltro" @bind="provinciaFiltro" class="form-control">
+        @foreach (var p in provincias)
+        {
+            <option value=@p.Id>@p.Nombre</option>
+        }
+    </select>
+</div>
+<br>
+
+<table class="table mb-40">
+    <tr>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Telefono</th>
+        <th>Fecha Vac. 1</th>
+        <th>Fecha Vac. 2</th>
+    </tr>
+    @foreach (var va in vacunados.Where(x => x.ProvinciaId == provinciaFiltro))
+    {
+        <tr>
+            <td>@va.Cedula</td>
+            <td>@va.Nombre</td>
+            <td>@va.Apellido</td>
+            <td>@va.Telefono</td>
+            <td>
+                @((va.Vacuna1Fecha.HasValue) ?
+            va.Vacuna1Fecha.Value.ToShortDateString()
+            : "N/A")
+            </td>
+            <td>
+                @((va.Vacuna2Fecha.HasValue) ?
+            va.Vacuna1Fecha.Value.ToShortDateString()
+            : "N/A")
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+@code {
+    private List<Provincia> provincias = null;
+    private List<Vacunado> vacunados = null;
+    private int provinciaFiltro;
+    
+    protected override void OnInitialized() {
+        vacunados = vc.Vacunados.ToList();
+        provincias = vc.Provincias.ToList();
+    }
+}

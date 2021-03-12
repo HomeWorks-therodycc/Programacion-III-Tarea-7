@@ -90,7 +90,7 @@ using Tarea7.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\Shared\NavMenu.razor"
+#line 53 "C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

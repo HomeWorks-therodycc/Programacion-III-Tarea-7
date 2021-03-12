@@ -176,3 +176,9 @@ C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net
 C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\ref\Tarea7.dll
 C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\Tarea7.pdb
 C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\Tarea7.genruntimeconfig.cache
+C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\RazorDeclaration\Pages\Configuration.razor.g.cs
+C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\RazorDeclaration\Pages\List_by_provincia.razor.g.cs
+C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\RazorDeclaration\Pages\List_by_signo.razor.g.cs
+C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\Razor\Pages\Configuration.razor.g.cs
+C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\Razor\Pages\List_by_provincia.razor.g.cs
+C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\obj\Debug\net5.0\Razor\Pages\List_by_signo.razor.g.cs

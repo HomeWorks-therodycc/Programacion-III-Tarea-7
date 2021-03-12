@@ -105,7 +105,7 @@ using Microsoft.EntityFrameworkCore;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 71 "C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\Pages\BorrarVacunado.razor"
+#line 122 "C:\Users\HP 15-BS191DX\Documents\Tarea7.1\Programacion-III-Tarea-7\Pages\BorrarVacunado.razor"
        
     private string cedulaInput = "";
     private string cedula = "";
