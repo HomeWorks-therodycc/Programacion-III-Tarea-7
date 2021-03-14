@@ -1,5 +1,6 @@
 @page "/Listbyprovincia"
 @using Data.Models
+@using Shared
 @using Microsoft.EntityFrameworkCore
 @inject vacunaContext vc
 
@@ -17,35 +18,14 @@
 </div>
 <br>
 
-<table class="table mb-40">
-    <tr>
-        <th>Cedula</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Telefono</th>
-        <th>Fecha Vac. 1</th>
-        <th>Fecha Vac. 2</th>
-    </tr>
-    @foreach (var va in vacunados.Where(x => x.ProvinciaId == provinciaFiltro))
-    {
-        <tr>
-            <td>@va.Cedula</td>
-            <td>@va.Nombre</td>
-            <td>@va.Apellido</td>
-            <td>@va.Telefono</td>
-            <td>
-                @((va.Vacuna1Fecha.HasValue) ?
-            va.Vacuna1Fecha.Value.ToShortDateString()
-            : "N/A")
-            </td>
-            <td>
-                @((va.Vacuna2Fecha.HasValue) ?
-            va.Vacuna1Fecha.Value.ToShortDateString()
-            : "N/A")
-            </td>
-        </tr>
-    }
-</table>
+<div>
+    <table class="table">
+        @foreach (var va in vacunados.Where(x => x.ProvinciaId == provinciaFiltro))
+        {
+            <VacunadoCard Vacunado="va" />
+        }
+    </table>
+</div>
 
 
 
@@ -55,7 +35,8 @@
     private int provinciaFiltro;
     
     protected override void OnInitialized() {
-        vacunados = vc.Vacunados.ToList();
+        vacunados = vc.Vacunados.Include("Provincia")
+            .Include("Vacuna1").Include("Vacuna2").ToList();
         provincias = vc.Provincias.ToList();
     }
 }
