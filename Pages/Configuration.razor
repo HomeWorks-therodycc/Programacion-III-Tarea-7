@@ -5,8 +5,14 @@
 
 <h3 class="titulocantvacuna">Configuration</h3>
 
-
+ <select id="nvacuna" @bind="nvacuna" class="form-control">
+        @foreach (var v in vacuna)
+        {
+            <option value=@v.Marca>@v.Marca</option>
+        }
+    </select>
 
 @code{
-
+private List<Vacuna> vacuna = null;
+    private int nvacuna;
 }

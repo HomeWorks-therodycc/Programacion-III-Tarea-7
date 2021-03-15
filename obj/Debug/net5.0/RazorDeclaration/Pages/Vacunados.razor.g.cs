@@ -119,6 +119,7 @@ using Microsoft.EntityFrameworkCore;
     private void buscar(){
             if(!string.IsNullOrEmpty(filtro)){
                 filva = vacunados.Where(x => x.Nombre == filtro.ToLower() && x.Apellido == filtro.ToLower()).ToList();;
+                
             }
         }
 
