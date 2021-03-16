@@ -243,6 +243,39 @@
         }
       },
       {
+        "HashCode": 150193719,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.Configuracion",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Configuracion"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.Configuracion"
+        }
+      },
+      {
+        "HashCode": -1825327525,
+        "Kind": "Components.Component",
+        "Name": "Tarea7.Pages.Configuracion",
+        "AssemblyName": "Tarea7",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Tarea7.Pages.Configuracion"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Tarea7.Pages.Configuracion",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -941016220,
         "Kind": "Components.Component",
         "Name": "Tarea7.App",
@@ -16059,19 +16092,9 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\admin\\Desktop\\ITLA\\Programacion 3\\Tarea 7\\Programacion-III-Tarea-7\\Pages\\_Host.cshtml",
-      "TargetPath": "Pages\\_Host.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\admin\\Desktop\\ITLA\\Programacion 3\\Tarea 7\\Programacion-III-Tarea-7\\Pages\\BorrarVacunado.razor",
       "TargetPath": "Pages\\BorrarVacunado.razor",
       "FileKind": "component"
-    },
-    {
-      "FilePath": "c:\\Users\\admin\\Desktop\\ITLA\\Programacion 3\\Tarea 7\\Programacion-III-Tarea-7\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
     },
     {
       "FilePath": "c:\\Users\\admin\\Desktop\\ITLA\\Programacion 3\\Tarea 7\\Programacion-III-Tarea-7\\Pages\\List_by_provincia.razor",
