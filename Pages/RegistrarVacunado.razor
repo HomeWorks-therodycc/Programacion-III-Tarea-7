@@ -1,8 +1,5 @@
 @page "/registrar"
 @using Data.Models
-@using BlazorLeaflet
-@using BlazorLeaflet.Models
-@using BlazorLeaflet.Models.Events
 @using Microsoft.AspNetCore.Components.Forms
 @inject vacunaContext vc
 @inject IJSRuntime jsr
@@ -65,14 +62,6 @@
                 <td></td>
             </tr>
             <tr>
-                <td>Ubicacion</td>
-                <td colspan="2">
-                    <div id="mapContainer" style="width: 90%; height: 300px;">
-                        <LeafletMap Map="mapa" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td>
                     @* <InputCheckbox @bind-Value="vacuna1" class="form-check-input"/> *@
                     Vacuna #1
@@ -128,9 +117,6 @@
     private bool existente = false;
     private bool nuevo = true;
 
-    private Map mapa = null;
-    private Marker ubicacionVacunado = null;
-
     private void parseaCedula() {
         cedula = cedulaInput.Replace("-", "").Replace(" ", "");
 
@@ -148,7 +134,6 @@
             existente = true;
             nuevo = false;
             error = "";
-            iniciarMapa();
         }
         catch (InvalidOperationException) {
             buscaEnApi();
@@ -182,7 +167,6 @@
             FechaNacimiento = fechaNacimiento,
             SignoZodiacal = fechaNacimiento.toZodiacSign()
         };
-        iniciarMapa();
     }
 
     private void vacunadoValido() {
@@ -202,42 +186,5 @@
 
         vc.SaveChanges();
         nm.NavigateTo("/vacunados");
-    }
-
-    private void iniciarMapa() 
-    {
-        mapa = new Map(jsr) {
-            Center = new LatLng(18.9f, -70f),
-            Zoom = 7.47f
-        };
-
-        var Lat = vacunado.Latitud.HasValue ? vacunado.Latitud.Value : 19.5f;
-        var Lng = vacunado.Longitud.HasValue ? vacunado.Longitud.Value : -69.65f;
-
-        ubicacionVacunado = new Marker(19.5f, -69.65f) {
-            Draggable = true,
-            Title = "Ubicacion del Vacunado"
-        };
-
-        mapa.OnInitialized += () => {
-            mapa.AddLayer(new TileLayer {                
-                UrlTemplate = "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                Attribution = "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
-            });
-            mapa.AddLayer(ubicacionVacunado);
-        };
-
-        mapa.OnClick += (Map sender, MouseEvent e) => {
-            vacunado.Latitud = e.LatLng.Lat;
-            vacunado.Longitud = e.LatLng.Lng;
-            ubicacionVacunado.Position = e.LatLng;
-            mapa.RemoveLayer(ubicacionVacunado);
-            mapa.AddLayer(ubicacionVacunado);
-        };
-
-        ubicacionVacunado.OnDrag += (Marker sender, DragEvent e) => {
-            vacunado.Latitud = e.LatLng.Lat;
-            vacunado.Longitud = e.LatLng.Lng;
-        };
     }
 }
